@@ -1,0 +1,166 @@
+<html>
+
+<head>
+    <title>Augment Image Genaration</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body class="body">
+    <div class="headi">
+        <span> <b> Standard Matrix Image Color Generator</b></span>
+    </div>
+
+    <div class="container maindiv">
+        <div class="row">
+            <span class="sub_head">Select image that need to convert in standart Matrix Color Format</span>
+            <p>
+                {% with messages = get_flashed_messages() %} {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %} {% endwith %}
+            </p>
+            {% if filename %}
+            <div>
+
+                <h4><i>standard images will be generated in few seconds but sparse conversion will take more time for rendering and processing if matirx is dispersed(may be few minitues)</i></h4>
+                <br><br>
+
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card h-100">
+                            <h3 class="card-title">Original Image</h3>
+                            <img src="{{ url_for('display_image', filename=filename) }}">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col">
+                         <div class="card h-100">
+                             <h3 class="card-title">Clip Heat</h3>
+                             <img src="{{ url_for('display_image', filename=filename9) }}">
+                             <div class="card-body">
+                             </div>
+                         </div>
+                     </div>                     
+                    <div class="col">
+                        <div class="card h-100">
+                            <h3 class="card-title">Greyscale + LUV</h3>
+                            <img src="{{ url_for('display_image', filename=filename1) }}">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100">
+                            <h3 class="card-title">CB:B+100 G+30 R</h3>
+                            <img src="{{ url_for('display_image', filename=filename2) }}">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col">
+                         <div class="card h-100">
+                             <h3 class="card-title">Clip Off </h3>
+                             <img src="{{ url_for('display_image', filename=filename11) }}">
+                             <div class="card-body">
+                             </div>
+                         </div>
+                     </div>       
+                     <div class="col">
+                         <div class="card h-100">
+                             <h3 class="card-title">Standard Canny  </h3>
+                             <img src="{{ url_for('display_image', filename=filename12) }}">
+                             <div class="card-body">
+                             </div>
+                         </div>
+                     </div>                                  
+                    <div class="col">
+                        <div class="card h-100">
+                            <h3 class="card-title">HSV Scale</h3>
+                            <img src="{{ url_for('display_image', filename=filename3) }}">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100">
+                            <h3 class="card-title">CB+ G-255</h3>
+                            <img src="{{ url_for('display_image', filename=filename4) }}">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100">
+                            <h3 class="card-title">CB: B+20 G+30 R+40</h3>
+                            <img src="{{ url_for('display_image', filename=filename5) }}">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100">
+                            <h3 class="card-title">CB: B+10 G+30 R+160</h3>
+                            <img src="{{ url_for('display_image', filename=filename6) }}">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100">
+                            <h3 class="card-title">YCR_CB</h3>
+                            <img src="{{ url_for('display_image', filename=filename7) }}">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100">
+                            <h3 class="card-title">LUV</h3>
+                            <img src="{{ url_for('display_image', filename=filename8) }}">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>                 
+                </div>
+
+            </div>
+            {% endif %}
+            <form method="post" action="/" enctype="multipart/form-data">
+                <dl>
+                    <p>
+                        <input type="file" name="file" class="form-control" autocomplete="off" required>
+                    </p>
+                </dl>
+                <p>
+                    <input type="submit" value="Submit" class="btn btn-info">
+                </p>
+            </form>
+        </div>
+
+
+        <div class="desc container">
+            <h2>Technology</h2> <br>
+            <h3>OpenCV is use to process image and get standard matrix dimension. The above formed images can directly be processed in Image Segmentation as the preprocessing is done in backend. The resultant images are in Sparce Matrix dimension, without
+                compromising the Interpolation of pixels. Images are render through Azure Cloud T4 GPU. The above generated images makes training faster and quick convergence of weights with minimum computation.</h3>
+        </div>
+
+    </div>
+
+
+
+    <footer>
+        <h2>Powered By: <img class="logo" src="static/logo.jpg" alt="logo"> </h2><br>
+        <h4>For any query write us at: <a href="mailto:jadhavpranav89@example.com">Mail Me</a></h4>
+        Copyright © 2023. All Rights Reserved by Jocker.<br><br><br>
+    </footer>
+</body>
+
+</html>
